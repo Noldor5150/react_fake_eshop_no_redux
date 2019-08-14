@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssPlugin = require('mini-css-extract-plugin');
 
@@ -11,7 +12,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].[hash].js',
   },
-  mode: 'production',
+
   module: {
     rules: [
       {
@@ -39,11 +40,11 @@ module.exports = {
       template: './public/index.html',
     }),
     new webpack.ProgressPlugin(),
+    new CopyPlugin([
+      {
+        from: './public',
+        ignore: ['index.html'],
+      },
+    ]),
   ],
-  devServer: {
-    compress: true,
-    port: 9001,
-    publicPath: '/',
-    historyApiFallback: true,
-  },
 };
