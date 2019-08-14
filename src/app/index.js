@@ -14,7 +14,7 @@ function App() {
           <Layout>
             <Switch>
               <Route path={ROUTES.defaultPage} exact component={Products} />
-              <Route path={ROUTES.cart} exact component={Cart} />} />
+              <Route path={ROUTES.cart} exact component={Cart} />
               <Route path={ROUTES.favorites} exact component={Favorites} />
               <Route path={ROUTES.product} exact component={SingleProduct} />
               <Redirect exact from={ROUTES.home} to={ROUTES.defaultPage} />
